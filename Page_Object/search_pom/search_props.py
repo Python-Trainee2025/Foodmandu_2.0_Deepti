@@ -17,3 +17,16 @@ class SearchPageProps(SearchLocators):
     def no_results_text(self):
         elements = self.driver.find_elements(*SearchLocators.NO_RESULTS_TEXT)
         return elements[0].text if elements else ""
+
+    # @property
+    # def result_item(self):
+    #     return self.driver.find_elements(*SearchLocators.MOMO_CART)
+
+    @property
+    def momo_restaurant(self):
+        return self.driver.find_elements(*SearchLocators.MOMO_RESTAURANT)
+
+    @property
+    def menu_search(self):
+        # return SINGLE element (not list)
+        return self.driver.find_element(*SearchLocators.MENU_SEARCH_BOX)

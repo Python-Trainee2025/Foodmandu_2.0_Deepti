@@ -27,4 +27,8 @@ class TestFoodManduLoginPage(BaseTest):
         password = self.creds['Invalid_Password']
         login_page.invalid_login_form(email,password)
         logging.info("Login unsuccessful")
+        self.test_login_with_valid_credentials()
+        logging.info("Login successful")
+
+
 
