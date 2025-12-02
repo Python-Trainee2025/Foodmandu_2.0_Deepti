@@ -1,3 +1,7 @@
+from telnetlib import EC
+
+from selenium.webdriver.support.wait import WebDriverWait
+
 from Page_Object.login_pom.login_locators import LoginLocators
 
 
@@ -25,5 +29,5 @@ class LoginProps:
     @property
     def error_message(self):
         elements = self.driver.find_elements(*LoginLocators.ERROR_MESSAGE)
-        return elements[0] if elements else None
+        return elements[0].text if elements else ""
 

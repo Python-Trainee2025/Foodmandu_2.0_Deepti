@@ -10,5 +10,8 @@ class LoginLocators:
     # PASSWORD = (By.XPATH, '/html/body/div[1]/div/div/div/div/div[2]/div[3]/form[1]/div/div[2]/input')
     LOGIN_BUTTON = (By.XPATH, "//div[contains(@class,'login__form-container')]//div//button")
     # LOGIN_BUTTON = (By.XPATH, '//*[@id="modal-body"]/form[1]/div/div[4]/button')
-    ERROR_MESSAGE = (By.XPATH, "/html/body/section[2]/div/div/div/p")  # Edit based on UI
+    #ERROR_MESSAGE = (By.CSS_SELECTOR, "div.page-notifications.page-notifications--error")
+    ERROR_MESSAGE = (By.XPATH, "//h1[contains(text(),'Thank you for joining us!')]")
+
     PROFILE_ICON=(By.XPATH,"//span[contains(@class,'icon-profile')]")
+    POPUP_CLOSE_BUTTON = (By.XPATH, "//button[contains(text(),'×') or contains(@class,'close')]")

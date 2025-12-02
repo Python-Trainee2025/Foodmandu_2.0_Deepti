@@ -1,8 +1,10 @@
+from selenium.common import NoSuchElementException
+
+from Page_Object.login_pom.login_locators import LoginLocators
 from Page_Object.login_pom.login_props import LoginProps
 
 
 class LoginPage(LoginProps):
-
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
@@ -19,12 +21,24 @@ class LoginPage(LoginProps):
     def click_login(self):
         self.login_button.click()
 
-    def get_error_message(self):
-        element = self.error_message
-        return element.text if element else None
 
     def login_form(self, email, password):
         self.login.click()
         self.enter_email(email)
         self.enter_password(password)
         self.click_login()
+
+    def invalid_login_form(self,email,password):
+        self.login.click()
+        self.enter_email(email)
+        self.enter_password(password)
+        self.click_login()
+        self.close_popup_if_present()
+        #return self.error_message()
+
+    def close_popup_if_present(self):
+        try:
+            popup_close = self.driver.find_element(*LoginLocators.POPUP_CLOSE_BUTTON)
+            popup_close.click()
+        except NoSuchElementException:
+            pass
